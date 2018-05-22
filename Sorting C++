@@ -1,9 +1,9 @@
-
+//link github: https://github.com/1717051039KhaernunAnisa/Sorting-in-C-
 #include<iostream>
 using namespace std;
 
 	//selection sort
-	void selsort(int a)
+	void selsort(int data[], int n)
 	{
 		int tmp;
 		for( int i = 0; i < 5; i++)
@@ -19,6 +19,56 @@ using namespace std;
 				}
 		for( int i = 0; i < 5; i++)
 		cout << data[i] << " "; 
+	}
+	
+	//bubble sort
+	
+	int data[14];
+	int tmp;
+	int n;
+	
+	void tukar (int a, int b)
+	{
+	int h;
+	h = data [b];
+	data [b] = data [a];
+	data [a] = h; 
+	}
+	
+	void input ()
+	{
+	cout << "Banyak Data Angka yang Ingin Diurutkan : ";
+	cin >> n;
+	cout << "--------------------------------------------------------------" << endl;
+	for (int i=0; i<n; i++)
+	{
+		cout << "Data Angka ke-" << (i+1) << " : ";
+		cin >> data [i];
+		tmp = data [i];
+	}
+	cout << endl;
+	}
+	
+	void tampil ()
+	{
+	for (int i=0; i<n; i++)
+	{
+		cout << data [i] << " ";
+	}
+	cout << endl;
+	}
+	
+	void bubble_sort ()
+	{
+	for (int i=1; i<n; i++)
+	{
+		for (int j=n-1; j>=1; j--)
+		{
+			if (data[j]<data[j-1]) tukar (j, j-1);
+		}
+		tampil ();
+	}
+	cout << endl;
 	}
 	
 	//merge sort
@@ -87,10 +137,38 @@ int main()
 	cout<<"Khaernun Anisa Ensri/1717051039\n";
 	cout<<"================================================="<<endl;
 	cout<<"\n";
-	cout<<"1. Selection Sort\n";
+	cout<<"pilih menu:"<<endl;
+	cout<<"1. selection sort/n";
+	cout<<"2. bubble sort/n";
+	cout<<"3. merge sort/n";
+	cin>>a;
+	switch (a)
+	{
+	case 1:
+	{
+				cout<<"1. Selection Sort\n";
 				int data [7] = { 7, 3, 9, 2, 5};
-	cout<<"2. Bubble Sort\n";
-	cout<<"3. Merge Sort\n";
+				int n = sizeof(data)/sizeof(data[0]);
+	break;
+	}
+	case 2:
+	{
+			cout<<"2. Bubble Sort\n";
+			cout << "--------------------------------------------------------------" << endl;
+			cout << "========================= Data Angka =========================" << endl;
+			cout << "--------------------------------------------------------------" << endl;
+			input ();
+			cout << "--------------------------------------------------------------" << endl;
+			cout << "                Proses Mengurutkan Data Angka                 " << endl;
+			cout << "--------------------------------------------------------------" << endl;
+			tampil ();
+			bubble_sort ();
+			cout << "--------------------------------------------------------------" << endl;
+	break;
+	}
+	case 3:
+	{
+			cout<<"3. Merge Sort\n";
 				int d[] = {30, 21, 1, 10, 11};
     			int d_size = sizeof(d)/sizeof(d[0]);
 			 	cout<<"------------------------------"<<endl;
@@ -100,8 +178,8 @@ int main()
 			 	cout<<"----------------------------"<<endl;
 				cout<<"Hasil Merge Sort adalah : \n";
 				cetak(d, d_size);
-	
-			}
+	break;
+	}
 	}
 	return 0;
 }
